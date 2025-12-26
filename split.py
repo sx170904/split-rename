@@ -38,12 +38,16 @@ if uploaded_file is not None:
             cert_num = cert_num_match.group(1) if cert_num_match else None
 
             # ----------------- Extract participant name -----------------
+            # ----------------- Extract participant name -----------------
             name = None
             for line in page_text.split("\n"):
                 line_clean = line.strip()
                 if line_clean.isupper() and len(line_clean.split()) >= 2:
-                    name = line_clean
+                    # Keep letters, numbers, spaces, and @
+                    name = ''.join(c for c in line_clean if c.isalnum() or c in [' ', '@'])
                     break
+
+            
 
             if not cert_num or not name:
                 st.warning(f"Skipped page {i+1}: Certificate number or name not found")
