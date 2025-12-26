@@ -60,7 +60,7 @@ if uploaded_file is not None:
             pdf_writer.write(pdf_bytes)
 
             # ----------------- Add to ZIP -----------------
-            output_filename = f"{cert_num}_CERTIFICATE OF ACHIEVEMENT_{name}.pdf"
+            output_filename = f"{cert_num}_CERTIFICATE OF ATTENDANCE_{name}.pdf"
             zip_file.writestr(output_filename, pdf_bytes.getvalue())
             processed_count += 1
             st.write(f"✅ Processed page {i+1}: {output_filename}")
